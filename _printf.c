@@ -16,39 +16,24 @@ int _printf(const char *format, ...)
 
 	va_start(argslist, format);
 
-	while (format && format[i])
+	for (; format && format[i]; i++)
 	{
 		if (format[i] == '%')
 		{
 			i++;
 
 			if (format[i] == 'c')
-			{
-				c = va_arg(argslist, int);
-				putchar(c);
-				len++;
-			}
+				len += (putchar(c = va_arg(argslist, int)), 1);
 			else if  (format[i] == 's')
-			{
-				str = va_arg(argslist, char *);
-				while (*str)
-				{
-					putchar(*str++);
-					len++;
-				}
-			}
+				for (str = va_arg(argslist, char *); *str; str++, len++)
+					putchar(*str);
 			else if (format[i] == '%')
-			{
-				putchar('%');
-				len++;
-			}
+				len += (putchar('%'), 1);
 			else
-			{
-				putchar(format[i]);
-				len++;
-			}
+				putchar(format[i]), len++;
 		}
-		i++;
+		else
+		putchar(format[i]), len++;
 	}
 	va_end(argslist);
 	return (len);
