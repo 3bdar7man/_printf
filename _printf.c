@@ -8,15 +8,13 @@
  */
 int _printf(const char *format, ...)
 {
-	int i, len;
-	i = 0;
-	len = 0;
+	int i = 0;
+	int len = 0;
 	va_list argslist;
+	char *str;
+	char c;
 
 	va_start(argslist, format);
-
-	char *s = va_arg(argslist, char *);
-	char c = va_arg(argslist, char);
 
 	while (format && format[i])
 	{
@@ -26,15 +24,17 @@ int _printf(const char *format, ...)
 
 			if (format[i] == 'c')
 			{
+				c = va_arg(argslist, int);
 				putchar(c);
 				len++;
 			}
 			else if  (format[i] == 's')
 			{
-				while (*s)
+				str = va_arg(argslist, char *);
+				while (*str)
 				{
+					putchar(*str++);
 					len++;
-					*s++;
 				}
 			}
 			else if (format[i] == '%')
