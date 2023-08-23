@@ -1,7 +1,6 @@
 #include "main.h"
 /**
  * _printf - produces output format as an original printf
- *
  * @format: this is a counter to character string containing format specifiers
  *
  * Return: length
@@ -28,7 +27,11 @@ int _printf(const char *format, ...)
 				len += (putchar(c = va_arg(argslist, int)), 1);
 			else if  (format[i] == 's')
 				for (str = va_arg(argslist, char *); *str; str++, len++)
+				{
+					if (str == 0)
+						return (-1);
 					putchar(*str);
+				}
 			else if (format[i] == '%')
 				len += (putchar('%'), 1);
 			else
