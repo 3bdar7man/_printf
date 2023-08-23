@@ -27,9 +27,7 @@ int _printf(const char *format, ...)
 				len += (putchar(c = va_arg(argslist, int)), 1);
 			else if  (format[i] == 's')
 				for (str = va_arg(argslist, char *); *str; str++, len++)
-				{
 					putchar(*str);
-				}
 			else if (format[i] == '%')
 				len += (putchar('%'), 1);
 			else
