@@ -5,5 +5,6 @@
 #include <stdio.h>
 
 int _printf(const char *format, ...);
+void prnitfp_str(void);
 
 #endif
