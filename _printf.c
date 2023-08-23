@@ -16,7 +16,7 @@ int _printf(const char *format, ...)
 
 	va_start(argslist, format);
 	if (!format && !format[i])
-		return (-1);
+		return (0);
 
 	for (; format && format[i]; i++)
 	{
