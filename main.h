@@ -1,10 +1,8 @@
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef _MAIN_H_
+#define _MAIN_H_
 
-#include <stdarg.h>
-#include <stdio.h>
-
+int _puts(char *str);
+int get_FormLen(char *format, ...);
 int _printf(const char *format, ...);
-void prnitfp_str(void);
 
-#endif
+#endif /* _MAIN_H_ */

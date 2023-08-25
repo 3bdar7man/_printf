@@ -1,4 +1,7 @@
 #include "main.h"
+#include <stdarg.h>
+#include <stdio.h>
+
 /**
  * _printf - produces output format as an original printf
  * @format: this is a counter to character string containing format specifiers
