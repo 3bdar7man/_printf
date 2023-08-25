@@ -10,35 +10,35 @@
  */
 int _printf(const char *format, ...)
 {
-	int i = 0;
-	int len = 0;
-	va_list argslist;
-	char *str;
-	char c;
+	int i, len = 0;
+	va_list argslist, *apP;
+	char c, *str;
 
+	va_copy(argslist, *apP);
 	va_start(argslist, format);
+	va_start(*apP, format);
 	if (!format && !format[i])
 		return (0);
 
-	for (; format && format[i]; i++)
+	for (i = 0; format && format[i]; i++)
 	{
 		if (format[i] == '%')
 		{
 			i++;
 
 			if (format[i] == 'c')
-				len += (putchar(c = va_arg(argslist, int)), 1);
+				putchar(c = va_arg(argslist, int));
 			else if  (format[i] == 's')
-				for (str = va_arg(argslist, char *); *str; str++, len++)
-					putchar(*str);
+				_puts(str = va_arg(argslist, char *);
 			else if (format[i] == '%')
-				len += (putchar('%'), 1);
+				putchar('%');
 			else
-				putchar(format[i]), len++;
+				putchar(format[i]);
 		}
 		else
-		putchar(format[i]), len++;
+		putchar(format[i]);
 	}
+	va_end(*apP);
 	va_end(argslist);
 	return (len);
 }
