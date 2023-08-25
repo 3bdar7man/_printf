@@ -38,6 +38,7 @@ int _printf(const char *format, ...)
 		else
 		putchar(format[i]);
 	}
+	len  = get_FormLen(format, apP);
 	va_end(*apP);
 	va_end(argslist);
 	return (len);
